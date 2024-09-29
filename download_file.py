@@ -17,7 +17,7 @@ def download_file() -> None:
         try:
             file_id = _find_file_id(file_name)
             _download_file(file_id, file_name)
-        except as e:
+        except Exception as e:
             print(e)
             continue
         
