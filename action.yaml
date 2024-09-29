@@ -10,7 +10,7 @@ inputs:
     description: The credentials key for Google service account that have access to file which will be downloaded
     required: true
 
-  download-file-name:
+  download-file-names:
     description: The name of the file to download
     required: true
 
