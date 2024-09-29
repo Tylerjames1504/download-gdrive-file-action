@@ -29,7 +29,7 @@ def _find_file_id(file_name: str) -> str:
                                                pageSize=10, fields="nextPageToken, files(id, name)").execute()
     file_list = search_result.get('files', [])
     if len(file_list) == 0:
-        raise f"Can't find file: {file_name}" 
+        raise Exception(f"Can't find file: {file_name}")
          
     file_id = file_list[0].get('id')
     print("Found file with ID: %s" % file_id)
