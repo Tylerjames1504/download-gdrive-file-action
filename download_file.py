@@ -12,9 +12,11 @@ from googleapiclient.http import MediaIoBaseDownload
 
 def download_file() -> None:
     file_name = os.getenv("DOWNLOAD_FILE_NAME")
-    file_id = _find_file_id(file_name)
-    _download_file(file_id, file_name)
-    if os.getenv("DOWNLOAD_FILE_NAMES") is not None:
+    if file_name is not None:
+        file_id = _find_file_id(file_name)
+        _download_file(file_id, file_name)
+    file_names = os.getenv("DOWNLOAD_FILE_NAMES")
+    if file_names is not None:
         file_names = os.getenv("DOWNLOAD_FILE_NAMES")
         for file_name in file_names:
             file_id = _find_file_id(file_name)
