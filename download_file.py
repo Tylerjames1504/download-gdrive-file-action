@@ -14,8 +14,13 @@ def download_file() -> None:
     file_names = os.getenv("DOWNLOAD_FILE_NAMES")
     file_names = file_names.split(", ")
     for file_name in file_names:
-        file_id = _find_file_id(file_name)
-        _download_file(file_id, file_name)
+        try:
+            file_id = _find_file_id(file_name)
+            _download_file(file_id, file_name)
+        except as e:
+            print(e)
+            continue
+        
 
 
 def _find_file_id(file_name: str) -> str:
@@ -24,8 +29,8 @@ def _find_file_id(file_name: str) -> str:
                                                pageSize=10, fields="nextPageToken, files(id, name)").execute()
     file_list = search_result.get('files', [])
     if len(file_list) == 0:
-        print("Can't find file: %s" % file_name)
-        sys.exit(1)
+        raise f"Can't find file: {file_name}" 
+         
     file_id = file_list[0].get('id')
     print("Found file with ID: %s" % file_id)
     return file_id
