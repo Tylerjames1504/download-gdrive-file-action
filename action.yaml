@@ -30,6 +30,7 @@ runs:
   image: Dockerfile
   env:
     SERVICE_ACCOUNT_KEY_JSON: ${{ inputs.service-account-key-json }}
+    DOWNLOAD_FILE_NAMES: ${{ inputs.download-file-names }}
     DOWNLOAD_FILE_NAME: ${{ inputs.download-file-name }}
     DOWNLOAD_TO: ${{ inputs.download-to }}
     EXPORT_MEDIA_TYPE: ${{ inputs.export-media-type }}
